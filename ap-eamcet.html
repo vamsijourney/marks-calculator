@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 AP EAMCET 2025 Marks Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: white;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .disqualified {
+            color: red;
+            font-weight: bold;
+        }
+
+        .marks-info {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f2ff;
+            font-size: 14px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #fo{
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>📊 AP EAMCET 2025 Marks Calculator </header>
+
+    <div class="container">
+        <label for="ipe">🎓 IPE Total Marks (out of 600):</label>
+        <input type="number" id="ipe" placeholder="Enter IPE Marks" required>
+        <p class="marks-info">📌 Maths + Physics + Chemistry + Practicals (2 Years)</p>
+
+        <label for="eamcet">📢 AP EAMCET Marks (out of 160):</label>
+        <input type="number" id="eamcet" placeholder="Enter EAMCET Marks" required>
+
+        <button onclick="predictRank()">🚀 Calculate </button>
+
+        <p id="result"></p>
+    </div>
+
+    <footer>
+        <p>📢 <strong>How is the score calculated?</strong></p>
+        <p>✅ The final score is based on a weighted score:</p>
+        <ul style="text-align: left; margin-left: 20px;">
+            <li>📖 <b>25%</b> Weightage from IPE Marks (Maths, Physics, Chemistry)</li>
+            <li>📝 <b>75%</b> Weightage from EAMCET Score</li>
+        </ul>
+    </footer>
+    <p id="fo"> vamsi_journey </p>
+    <script>
+        function predictRank() {
+            let ipe = parseFloat(document.getElementById('ipe').value) || 0;
+            let eamcet = parseFloat(document.getElementById('eamcet').value) || 0;
+
+            
+            // Normalization (IPE: 25%, EAMCET: 75%)
+            let ipeScore = (ipe / 600) * 25;
+            let eamcetScore = (eamcet / 160) * 75;
+            let totalAggregate = ipeScore + eamcetScore; // Now in 0-100 range
+
+            document.getElementById("result").innerHTML = 
+                `✅ Total Aggregate Score: <span class="highlight">${totalAggregate.toFixed(2)} / 100</span>`;
+        }
+    </script>
+</body>
+</html>
